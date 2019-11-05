@@ -5,6 +5,7 @@ import * as fromModules from './modules';
 
 const MODULES = [
   fromModules.UsersModule,
+  fromModules.OrdersModule,
 ];
 
 @Module({

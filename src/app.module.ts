@@ -7,12 +7,11 @@ const MODULES = [
   fromModules.UsersModule,
   fromModules.OrdersModule,
 ];
-
 @Module({
   imports: [
     MongooseModule.forRoot(
       'mongodb+srv://dev:iQ4CBoF2M7UW0NsU@kl-wo8ho.mongodb.net/test?retryWrites=true&w=majority',
-    ),
+      { useNewUrlParser: true, useUnifiedTopology: true }),
     ...MODULES,
   ],
 })

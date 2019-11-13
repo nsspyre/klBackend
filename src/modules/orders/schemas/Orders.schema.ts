@@ -6,7 +6,7 @@ import { ProductsSchema } from './Products.schema';
  */
 
 export const OrdersSchema = new mongoose.Schema({
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    user_id: mongoose.Schema.Types.ObjectId,
     quantity: Number,
     date: { type: Date, default: Date.now() },
     products: [ProductsSchema],

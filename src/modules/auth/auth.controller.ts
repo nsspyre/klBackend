@@ -13,8 +13,8 @@ export class AuthController {
     }
 
     @Post('signup')
-    async userSignIn(@Request() req) {
-        const token = await this.service.userSignup(req.body);
+    async userSignUp(@Request() req) {
+        const token = await this.service.userSignup(req.user);
 
         return token;
     }

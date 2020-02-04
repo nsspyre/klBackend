@@ -15,7 +15,7 @@ import { CoreModule } from '../../core/core.module';
         UsersModule,
         CoreModule,
     ],
-    providers: [AuthService, LocalStrategy, JwtStrategy],
+    providers: [AuthService, LocalStrategy],
     controllers: [AuthController],
     exports: [AuthService],
 })

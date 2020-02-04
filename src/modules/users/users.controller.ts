@@ -17,7 +17,7 @@ export class UsersController {
 
     @Get()
     async getAllUsers() {
-        const users = this.service.getAllUsers();
+        const users = await this.service.getAllUsers();
         return users;
     }
 

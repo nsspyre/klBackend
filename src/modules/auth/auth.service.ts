@@ -36,7 +36,7 @@ export class AuthService {
         return null;
     }
 
-    async userSignup(user: any) {
+    async userSignup(user: User) {
         const result = await this.userService.addUser(user);
         const credentials = { username: result.username, id: result._id };
         const token = await this.jwt.signToken(credentials);

@@ -1,6 +1,7 @@
 import { Controller, Post, Body, Param, UseGuards, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
+import { User } from '../users/interfaces/User.interface';
 
 @Controller('auth')
 export class AuthController {
@@ -13,8 +14,8 @@ export class AuthController {
     }
 
     @Post('signup')
-    async userSignUp(@Request() req) {
-        const token = await this.service.userSignup(req.user);
+    async userSignUp(@Body() user: User) {
+        const token = await this.service.userSignup(user);
 
         return token;
     }

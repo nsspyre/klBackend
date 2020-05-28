@@ -7,10 +7,10 @@ import { User } from '../users/interfaces/User.interface';
 export class AuthController {
     constructor(private readonly service: AuthService) {}
 
-    @UseGuards(AuthGuard('local'))
+    // @UseGuards(AuthGuard('local'))
     @Post('login')
-    async userLogin(@Request() req) {
-        return await this.service.userLogin(req.user);
+    async userLogin(@Body() user: User) {
+        return await this.service.userLogin(user);
     }
 
     @Post('signup')

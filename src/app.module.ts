@@ -16,10 +16,6 @@ const MODULES = [
   fromModules.AuthModule,
 ];
 
-const MIDDLEWARES = [
-  fromMdwrs.AuthMiddleware,
-];
-
 @Module({
   imports: [
     MongooseModule.forRoot(

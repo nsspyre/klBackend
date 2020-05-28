@@ -6,7 +6,7 @@ export class AuthenticationService {
     constructor(private readonly jwtService: JwtService) {}
 
     public async signToken(
-        payload: { username: string, id: string },
+        payload: { email: string, id: string },
     ): Promise<{ token: string }> {
 
         if (payload) {

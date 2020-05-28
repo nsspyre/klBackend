@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { UserService } from '../users/users.service';
 import { AuthenticationService as JwtService } from '../../core/services/authentication.service';
@@ -22,23 +22,31 @@ export class AuthService {
         return null;
     }
 
-    async userLogin(user: User) {
-        const credentials = { username: user.username, id: user._id };
+    async userLogin(userData: User) {
+        const { email, password} = userData;
+        const user = await this.validateUser(email, password);
 
-        const token = await this.jwt.signToken(credentials);
+        if (user) {
+            const credentials = { email: user.email, id: user._id };
 
-        if (token) {
-            await this.userService.updateUser(user.id, token);
+            const token = await this.jwt.signToken(credentials);
 
-            return token;
+            if (token) {
+                await this.userService.updateUser(user.id, token);
+
+                return token;
+            }
+
+            return null;
+        } else {
+            throw new UnauthorizedException('Contraseña o email son incorrectos!');
         }
 
-        return null;
     }
 
     async userSignup(user: User) {
         const result = await this.userService.addUser(user);
-        const credentials = { username: result.username, id: result._id };
+        const credentials = { email: result.email, id: result._id };
         const token = await this.jwt.signToken(credentials);
 
         if (token) {

@@ -13,7 +13,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
         const user = await this.authService.validateUser(username, password);
 
         if (!user) {
-            throw new UnauthorizedException('Password or email dont match!');
+            throw new UnauthorizedException('Password o email son incorrectos!');
         }
 
         return user;

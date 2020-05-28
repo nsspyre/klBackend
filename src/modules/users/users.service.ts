@@ -54,7 +54,7 @@ export class UserService {
         const user = await this.userModel.findById(id);
 
         if (!user) {
-            throw new NotFoundException('could not find user');
+            throw new NotFoundException('Usuario no existe');
         }
 
         return user;
@@ -64,7 +64,7 @@ export class UserService {
         const user = await this.userModel.findOne(data);
 
         if (!user) {
-            throw new NotFoundException('could not find user');
+            throw new NotFoundException('Usuario no existe');
         }
 
         return user;
@@ -78,7 +78,7 @@ export class UserService {
         const exists = await this.userModel.exists(data);
 
         if (exists && throwException) {
-            throw new BadRequestException('username or email in use');
+            throw new BadRequestException('username o email ya están registrados');
         }
 
         return exists;

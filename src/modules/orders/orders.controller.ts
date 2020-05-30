@@ -8,7 +8,7 @@ export class OrdersController {
     constructor(private readonly service: OrderService) {}
 
     @Post()
-    async addOrder(@Body('order') order: CreateOrderDto) {
+    async addOrder(@Body() order: CreateOrderDto) {
 
         const id = await this.service.addOrder(order);
 

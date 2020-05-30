@@ -1,15 +1,14 @@
-import { ProductDto } from './create-product.dto';
+import { Product } from '../../products/dto/create-product.dto';
 
 /**
  * DTO for User
  */
 
 export class CreateOrderDto {
-    // tslint:disable-next-line:variable-name
-    readonly user_id: string;
+    readonly userId: string;
     readonly quantity: string;
     readonly date: string;
-    readonly products: ProductDto[];
+    readonly products: Product[];
     readonly location: string;
     readonly total: string;
     readonly addressDescription: string;

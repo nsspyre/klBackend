@@ -1,12 +1,12 @@
 import { Document } from 'mongoose';
-import { Product } from './Product.interface';
+import { Product } from '../../products/interfaces/Product.interface';
 
 /**
  * Interface for Order
  */
 
 export interface Order extends Document {
-    readonly user_id: string;
+    readonly userId: string;
     readonly quantity: string;
     readonly date: string;
     readonly products: Product[];

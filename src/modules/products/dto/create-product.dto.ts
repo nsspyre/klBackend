@@ -9,6 +9,8 @@ export class Product {
     readonly description: string;
     readonly calories: number;
     readonly type: number;
+    readonly size: string;
+    readonly weight: number;
     readonly sizes: [{ size: string, price: number, weight: number }];
     readonly options: Option[];
 }

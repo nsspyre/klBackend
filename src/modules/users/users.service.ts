@@ -70,6 +70,21 @@ export class UserService {
         return user;
     }
 
+    async getUserOrders(id: string) {
+        const result = await this.userModel.findById(id)
+            .select('orders')
+            .populate({
+                path: 'orders',
+                options: {
+                    sort: { createdAt: 'asc' },
+                    limit: 3,
+                },
+            })
+            .exec();
+
+        return result;
+    }
+
     async userExists(
         data,
         throwException: boolean = false,

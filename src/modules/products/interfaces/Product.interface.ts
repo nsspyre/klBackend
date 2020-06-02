@@ -26,6 +26,8 @@ export interface Product extends Document {
     readonly calories: number;
     readonly description: string;
     readonly type: number;
+    readonly size: string;
+    readonly weight: number;
     readonly sizes: Size[];
     readonly options: Option[];
 }

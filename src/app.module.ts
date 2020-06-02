@@ -15,6 +15,7 @@ const MODULES = [
   fromModules.OrdersModule,
   fromModules.AuthModule,
   fromModules.ProductsModule,
+  fromModules.FeedModule,
 ];
 
 @Module({

@@ -13,4 +13,7 @@ export class CreateUserDto {
     readonly username: string;
     readonly role: string;
     readonly address: string;
+    readonly name: string;
+    readonly lastname: string;
+    readonly orders: any[];
 }

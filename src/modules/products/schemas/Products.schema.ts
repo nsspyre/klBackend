@@ -22,6 +22,7 @@ export const ProductsSchema = new mongoose.Schema({
     description: String,
     type: Number,
     weight: Number,
+    size: String,
     sizes: [{ size: String, price: Number, weight: Number }],
     options: [OptionsSchema],
 });

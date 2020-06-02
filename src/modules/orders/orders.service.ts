@@ -5,21 +5,39 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
+import { UserService } from '../users/users.service';
+
 @Injectable()
 export class OrderService {
 
-    constructor(@InjectModel('Order') private readonly orderModel: Model<Order>) { }
+    constructor(
+        @InjectModel('Order') private readonly orderModel: Model<Order>,
+        private userService: UserService,
+    ) { }
 
     async addOrder(order: CreateOrderDto) {
+        const { userId } = order;
+
         const newOrder = new this.orderModel(order);
 
-        const result = await newOrder.save();
+        const orderResult = await newOrder.save();
 
-        return result._id as string;
+        const { orders } = await this.userService.findUserById(userId);
+
+        const newUserOrders = [...orders, orderResult._id];
+
+        await this.userService.updateUser(userId, { products: newUserOrders });
+
+        return orderResult._id as string;
     }
 
     async getAllOrders() {
         const orders = await this.orderModel.find().exec();
+        return orders;
+    }
+
+    async getUserOrdersFeed(id: string) {
+        const orders = await this.userService.getUserOrders(id);
         return orders;
     }
 

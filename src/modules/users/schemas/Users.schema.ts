@@ -14,5 +14,8 @@ export const UserSchema = new mongoose.Schema({
   isPreferred: { type: Boolean, default: false, required: false },
   username: String,
   address: String,
+  name: String,
+  lastname: String,
   role: { type: String, default: 'user' },
+  orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
 });

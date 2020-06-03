@@ -32,9 +32,9 @@ export class AuthService {
             const token = await this.jwt.signToken(credentials);
 
             if (token) {
-                await this.userService.updateUser(user.id, token);
+                const userUpdated = await this.userService.updateUser(user.id, token);
 
-                return token;
+                return userUpdated;
             }
 
             return null;
@@ -50,9 +50,10 @@ export class AuthService {
         const token = await this.jwt.signToken(credentials);
 
         if (token) {
-            await this.userService.updateUser(result._id, token);
+            const userUpdated = await this.userService.updateUser(result._id, token);
+            return userUpdated;
         }
 
-        return token;
+        return true;
     }
 }

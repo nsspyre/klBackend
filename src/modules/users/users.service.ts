@@ -39,7 +39,9 @@ export class UserService {
     }
 
     async updateUser(id: string, user: any) {
-        const result = await this.userModel.findByIdAndUpdate(id, user).exec();
+        const result = await this.userModel.findByIdAndUpdate(id, user)
+            .select('-password')
+            .exec();
 
         return result;
     }

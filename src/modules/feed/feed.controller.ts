@@ -15,6 +15,6 @@ export class FeedController {
     async getUserOrdersFeed(@Param('id') id: string) {
         const { orders } = await this.service.getUserOrdersFeed(id);
         const { recommended } = await this.service.getRecommendedProducts();
-        return { orders, recommended };
+        return { result: { orders, recommended } };
     }
 }

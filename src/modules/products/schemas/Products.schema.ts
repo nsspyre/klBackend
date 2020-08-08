@@ -23,6 +23,8 @@ export const ProductsSchema = new mongoose.Schema({
     type: Number,
     weight: Number,
     size: String,
+    isFavorite: { type: Boolean, default: false },
+    img: { type: Object, default: { uri: '' } },
     sizes: [{ size: String, price: Number, weight: Number }],
     options: [OptionsSchema],
 });

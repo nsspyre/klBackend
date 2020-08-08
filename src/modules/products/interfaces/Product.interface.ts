@@ -20,6 +20,10 @@ interface Size {
     weight: number;
 }
 
+interface Img {
+    uri: string;
+}
+
 export interface Product extends Document {
     readonly name: string;
     readonly price: number;
@@ -29,5 +33,7 @@ export interface Product extends Document {
     readonly size: string;
     readonly weight: number;
     readonly sizes: Size[];
+    readonly img: Img;
+    readonly isFavorite: boolean;
     readonly options: Option[];
 }

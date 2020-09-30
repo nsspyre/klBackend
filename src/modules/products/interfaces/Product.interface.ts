@@ -3,15 +3,20 @@ import { Document } from 'mongoose';
 /**
  * Interface for Product
  */
-export interface Ingredients {
+export interface Options {
     readonly name: string;
     readonly price: number;
     readonly calories: number;
+    readonly extraType: string;
+    readonly isExtra: boolean;
+    readonly onStock: boolean;
 }
 
-export interface Option {
+export interface ProductOption {
     readonly name: string;
-    readonly ingredients: Ingredients[];
+    readonly maxQuantity: number;
+    readonly isSize: boolean;
+    readonly options: Options[];
 }
 
 interface Size {
@@ -35,5 +40,5 @@ export interface Product extends Document {
     readonly sizes: Size[];
     readonly img: Img;
     readonly isFavorite: boolean;
-    readonly options: Option[];
+    readonly productOptions: ProductOption[];
 }

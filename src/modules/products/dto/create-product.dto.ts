@@ -1,18 +1,18 @@
-import { Option } from './create-option.dto';
+import { ProductOptions } from './create-productOption.dto';
 /**
  * Class DTO for product
  */
 
 export class Product {
     readonly name: string;
-    readonly price: number;
+    price: number;
     readonly description: string;
-    readonly calories: number;
+    calories: number;
     readonly type: number;
     readonly size: string;
     readonly weight: number;
     readonly img?: { uri: string; };
     readonly isFavorite: boolean;
     readonly sizes: [{ size: string, price: number, weight: number }];
-    readonly options: Option[];
+    productOptions: ProductOptions[];
 }

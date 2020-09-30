@@ -14,7 +14,7 @@ const SERVICES = [
 @Module({
   imports: [
     JwtModule.register({
-      secret: process.env.JWT_SECRET,
+      secret: process.env.JWT_SECRET || 'secret',
       signOptions: { expiresIn: '5h' },
   }),
   ],

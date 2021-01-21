@@ -1,4 +1,3 @@
-import { ProductOptions } from './create-productOption.dto';
 /**
  * Class DTO for product
  */
@@ -14,5 +13,5 @@ export class Product {
     readonly img?: { uri: string; };
     readonly isFavorite: boolean;
     readonly sizes: [{ size: string, price: number, weight: number }];
-    productOptions: ProductOptions[];
+    productOptions: string[];
 }

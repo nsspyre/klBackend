@@ -54,7 +54,7 @@ export class OrderService {
     }
 
     async deleteOrder(id: string) {
-        const result = await this.orderModel.findOneAndDelete({ _id: id }).exec();
+        await this.orderModel.findOneAndDelete({ _id: id });
 
         return null;
     }

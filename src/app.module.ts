@@ -1,4 +1,4 @@
-import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import * as dotenv from 'dotenv';
 
@@ -16,6 +16,8 @@ const MODULES = [
   fromModules.AuthModule,
   fromModules.ProductsModule,
   fromModules.FeedModule,
+  fromModules.OptionsModule,
+  fromModules.ProductOptionsModule,
 ];
 
 @Module({

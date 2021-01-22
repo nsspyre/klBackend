@@ -3,21 +3,6 @@ import { Document } from 'mongoose';
 /**
  * Interface for Product
  */
-export interface Options extends Document {
-    readonly name: string;
-    readonly price: number;
-    readonly calories: number;
-    readonly extraType: string;
-    readonly isExtra: boolean;
-    readonly onStock: boolean;
-}
-
-export interface ProductOption extends Document {
-    readonly name: string;
-    readonly maxQuantity: number;
-    readonly isSize: boolean;
-    readonly options: string[];
-}
 
 interface Size {
     size: string;

@@ -1,12 +1,13 @@
-/**
- * Class DTO for ingredient options
- */
+import { Document } from 'mongoose';
 
-export class Options {
+/**
+ * Interface for Product
+ */
+export interface Options extends Document {
     readonly name: string;
     readonly price: number;
     readonly calories: number;
-    readonly extraType: string;
+    readonly extraType?: string;
     readonly isExtra: boolean;
     readonly onStock: boolean;
 }

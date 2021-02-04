@@ -6,10 +6,10 @@ import { Product } from '../../products/dto/create-product.dto';
 
 export class CreateOrderDto {
     readonly userId: string;
-    readonly quantity: string;
-    readonly date: string;
-    readonly products: Product[];
-    readonly location: string;
+    quantity?: string;
+    readonly createdAt?: string;
+    readonly products?: string[];
+    readonly location?: string;
     readonly total: string;
-    readonly addressDescription: string;
+    readonly addressDescription?: string;
 }

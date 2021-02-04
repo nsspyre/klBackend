@@ -1,11 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-
-import {
-  ProductOption,
-} from './interfaces/ProductOptions.interface';
-import { ProductOptions as ProductOptionsDto } from './dto/create-productOption.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+
+import { ProductOption } from './interfaces/ProductOptions.interface';
+import { ProductOptions as ProductOptionsDto } from './dto/create-productOption.dto';
 
 @Injectable()
 export class ProductOptionsService {
@@ -26,17 +24,21 @@ export class ProductOptionsService {
     }
   }
 
-  public async pushOptions(
-    id: string,
-    option: string,
-  ): Promise<string> {
+  public async getAllProductOptions() {
     try {
-      const productOptionUpdated = await this.model.findByIdAndUpdate(
-        id,
-        {
-          $push: { options: option },
-        },
-      );
+      const result = await this.model.find({});
+
+      return result;
+    } catch (error) {
+      throw new NotFoundException(error);
+    }
+  }
+
+  public async pushOptions(id: string, option: string): Promise<string> {
+    try {
+      const productOptionUpdated = await this.model.findByIdAndUpdate(id, {
+        $push: { options: option },
+      });
 
       return productOptionUpdated._id as string;
     } catch (error) {
@@ -52,5 +54,15 @@ export class ProductOptionsService {
     } catch (error) {
       throw new NotFoundException(error);
     }
+  }
+
+  public async findProductOption(id: string) {
+    const result = await this.model.findById(id);
+
+    if (!result) {
+      throw new NotFoundException('No existe esta option de producto.');
+    }
+
+    return result;
   }
 }

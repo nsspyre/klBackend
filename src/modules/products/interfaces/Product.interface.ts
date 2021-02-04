@@ -7,7 +7,6 @@ import { Document } from 'mongoose';
 interface Size {
     size: string;
     price: number;
-    weight: number;
 }
 
 interface Img {
@@ -25,5 +24,5 @@ export interface Product extends Document {
     readonly sizes: Size[];
     readonly img: Img;
     readonly isFavorite: boolean;
-    readonly productOptions: string[];
+    productOptions: string[];
 }

@@ -45,8 +45,8 @@ export class ProductsService {
     return product;
   }
 
-  private async findProduct(id: string): Promise<Product> {
-    const product = await this.model.findById(id);
+  public async findProduct(id: string): Promise<Product> {
+    const product = await this.model.findById(id).populate('productOptions');
 
     if (!product) {
       throw new NotFoundException('No existe ese producto');

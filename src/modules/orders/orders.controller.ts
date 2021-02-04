@@ -1,14 +1,13 @@
 import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
 import { OrderService } from './orders.service';
-import { CreateOrderDto } from './dto/create-order.dto';
-import { Order } from './interfaces/Order.interface';
+import { Order, OrderPayload } from './interfaces/Order.interface';
 
 @Controller('orders')
 export class OrdersController {
     constructor(private readonly service: OrderService) {}
 
     @Post()
-    async addOrder(@Body() order: CreateOrderDto) {
+    async addOrder(@Body() order: OrderPayload) {
 
         const id = await this.service.addOrder(order);
 

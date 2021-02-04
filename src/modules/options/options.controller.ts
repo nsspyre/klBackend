@@ -6,7 +6,7 @@ import { OptionsService } from './options.service';
 export class OptionsController {
   constructor(private readonly service: OptionsService) {}
 
-  @Post('option')
+  @Post()
   async addOption(@Body() option: OptionsDto) {
     const id = await this.service.addOption(option);
 

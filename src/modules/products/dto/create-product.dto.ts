@@ -1,6 +1,10 @@
 /**
  * Class DTO for product
  */
+interface Size {
+    size: string;
+    price: number;
+}
 
 export class Product {
     readonly name: string;
@@ -12,6 +16,6 @@ export class Product {
     readonly weight: number;
     readonly img?: { uri: string; };
     readonly isFavorite: boolean;
-    readonly sizes: [{ size: string, price: number, weight: number }];
+    readonly sizes: Size[];
     productOptions: string[];
 }

@@ -20,7 +20,7 @@ export class ProductsController {
         return { _id: id };
     }
 
-    @Get('id')
+    @Get(':id')
     async getProduct(@Param('id') id: string) {
         return this.service.getProduct(id);
     }
